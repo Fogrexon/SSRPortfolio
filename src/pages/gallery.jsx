@@ -1,11 +1,11 @@
 import React from 'react';
 import App from '../components/App.js';
-import Home from '../components/home/main';
+import Gallery from '../components/gallery/main';
 
 export default () => (
   <>
     <App>
-      <Home />
+      <Gallery />
     </App>
   </>
 );

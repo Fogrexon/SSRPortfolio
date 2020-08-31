@@ -1,11 +1,11 @@
-import webpack from 'webpack'
-import dotenv from 'dotenv'
-dotenv.config();
+import webpack from 'webpack';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 module.exports = {
   distDir: '../.next',
-  webpack: config => {
+  webpack: (config) => {
     const env = Object.keys(process.env).reduce((acc, curr) => {
       acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
       return acc;
@@ -15,4 +15,4 @@ module.exports = {
 
     return config;
   },
-}
+};

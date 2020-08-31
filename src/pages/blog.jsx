@@ -1,11 +1,11 @@
 import React from 'react';
 import App from '../components/App.js';
-import Home from '../components/home/main';
+import BlogList from '../components/blog/BlogList';
 
 export default () => (
   <>
     <App>
-      <Home />
+      <BlogList />
     </App>
   </>
 );

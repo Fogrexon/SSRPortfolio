@@ -1,0 +1,21 @@
+.image_container {
+  overflow: auto hidden;
+  white-space: nowrap;
+  height: 70px;
+  width: 100%;
+}
+.image_box {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+}
+
+.image_box img {
+  width: 70px;
+  height: 50px;
+}
+
+.image_box form input {
+  height: 20px;
+  width: 100%;
+}

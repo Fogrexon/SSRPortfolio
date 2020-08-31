@@ -1,9 +1,11 @@
-import App from '../components/App'
+import React from 'react';
+import App from '../components/App.js';
+import About from '../components/about/main';
 
-export default function About() {
-  return (
+export default () => (
+  <>
     <App>
-      <p>About Page</p>
+      <About />
     </App>
-  )
-}
+  </>
+);
