@@ -5,7 +5,6 @@ import { Parallax } from 'rc-scroll-anim';
 import Container from 'react-bootstrap/Container';
 
 import { SectionTitle } from '../utils/Components';
-import icon from '../images/fogrex_icon.svg';
 import style from './About.module.scss';
 import iconStyle from '../navigations/Basics.module.scss';
 
@@ -78,13 +77,13 @@ export default () => (
         title={
           (
             <div className={style.fogrex_container}>
-              <img src={icon} className={style.fogrex} alt="Big Fogrex Icon" />
+              <img src="/images/fogrex_icon.svg" className={style.fogrex} alt="Big Fogrex Icon" />
             </div>
           )
         }
       >
         このアイコンは私のシンボルともいえるものです。3秒で書きました。私の公式のページやチャンネルにはいたるところに用いられています。以下にsvgファイルを置いておきます。
-        <a href={icon}>SVG</a>
+        <a href="/images/fogrex_icon.svg">SVG</a>
       </Subsection>
     </Container>
     <SectionTitle title="Contact" key="contact" />

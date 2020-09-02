@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -23,7 +24,7 @@ const formatDate = (date, _format) => {
 const BlogCard = ({ item }) => (
   <Card key={item.id} className={style.card}>
     <Card.Title>
-      <Link to={`/admin/blog/${item.id}`}>{`${formatDate(item.createdAt.toDate(), 'YYYY年MM月DD日')} - ${item.title}`}</Link>
+      <Link href={`/admin/blog/${item.id}`}>{`${formatDate(item.createdAt.toDate(), 'YYYY年MM月DD日')} - ${item.title}`}</Link>
     </Card.Title>
     <div>
       {item.tags.map((tag) => (
@@ -35,15 +36,7 @@ const BlogCard = ({ item }) => (
     </Card.Body>
   </Card>
 );
-export default () => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    getBlogList().then((list) => {
-      setItems(list);
-    });
-  }, []);
-
+const BlogAdmin = ({ items }) => {
   const addItem = () => {
     addBlog({
       title: '仮タイトル',
@@ -51,9 +44,7 @@ export default () => {
       tags: [],
       createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     }).then(() => {
-      getBlogList().then((workList) => {
-        setItems(workList);
-      });
+      useRouter().reload();
     });
   };
 
@@ -67,3 +58,10 @@ export default () => {
     </Container>
   );
 };
+
+BlogAdmin.getServerSideProps = async () => {
+  const items = await getBlogList();
+  return { props: { items } };
+};
+
+export default BlogAdmin;

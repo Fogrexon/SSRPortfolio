@@ -1,20 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { firebase } from '../firebase/firebase';
 import { getWorkList, addWork } from '../firebase/firestore';
 import Items from './gallery/Items';
 
-export default () => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    getWorkList().then((list) => {
-      setItems(list);
-    });
-  }, []);
-
+const GalleryAdmin = ({ items }) => {
   const addItem = () => {
     addWork({
       title: '仮タイトル',
@@ -24,9 +17,7 @@ export default () => {
       sourcecode: '',
       updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
     }).then(() => {
-      getWorkList().then((workList) => {
-        setItems(workList);
-      });
+      useRouter().reload();
     });
   };
 
@@ -39,4 +30,9 @@ export default () => {
       <Button onClick={addItem}>AddItem</Button>
     </Container>
   );
+};
+
+GalleryAdmin.getServerSideProps = async () => {
+  const items = await getWorkList();
+  return { props: { items } };
 };

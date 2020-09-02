@@ -3,16 +3,13 @@ import {
   Card, Button, Badge,
 } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
-import noImage from '../images/galleries/noimage.png';
-import iconPath from '../images/fogrex_icon.svg';
-import { getWorkList } from '../firebase/firestore';
 
 export const GalleryCard = ({ item }) => {
   let { src } = item;
   const {
     title, description, link, sourcecode, tags,
   } = item;
-  src = src || noImage;
+  src = src || '/images/galleries/noimage.png';
   return (
     <Card>
       <Card.Img variant="top" src={src} />
@@ -27,28 +24,15 @@ export const GalleryCard = ({ item }) => {
   );
 };
 
-const iconImage = new Image();
-iconImage.src = iconPath;
+const HomeItems = ({ items }) => (
+  <div className="main-section">
+    <h1 className="section-title">Latest</h1>
+    <CardColumns>
+      {items.map((item, index) => (
+        <GalleryCard item={item} index={index} key={item.title} />
+      ))}
+    </CardColumns>
+  </div>
+);
 
-export default () => {
-  const [items, setItems] = React.useState([]);
-  React.useEffect(
-    () => {
-      getWorkList(2).then((gotItems) => {
-        setItems(gotItems);
-      });
-    },
-    [],
-  );
-
-  return (
-    <div className="main-section">
-      <h1 className="section-title">Latest</h1>
-      <CardColumns>
-        {items.map((item, index) => (
-          <GalleryCard item={item} index={index} key={item.title} />
-        ))}
-      </CardColumns>
-    </div>
-  );
-};
+export default HomeItems;

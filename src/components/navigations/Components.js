@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
+import Link from 'next/link';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -12,9 +12,9 @@ const anim = animList[Math.floor(Math.random() * animList.length)];
 export const NavigationBar = () => (
   <>
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-      <LinkContainer to="/">
+      <Link href="/">
         <Navbar.Brand className={[style.nav_title, anim].join(' ')}>Fogrex&apos;s Website</Navbar.Brand>
-      </LinkContainer>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="justify-content-end">

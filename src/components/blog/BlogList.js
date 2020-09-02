@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getBlogList } from '../firebase/firestore';
 import style from './Blog.module.scss';
 
@@ -20,7 +20,7 @@ const formatDate = (date, _format) => {
 const BlogCard = ({ item }) => (
   <Card key={item.id} className={style.card}>
     <Card.Title>
-      <Link to={`/blog/${item.id}`}>{`${formatDate(item.createdAt.toDate(), 'YYYY年MM月DD日')} - ${item.title}`}</Link>
+      <Link href={`/blog/${item.id}`}>{`${formatDate(item.createdAt.toDate(), 'YYYY年MM月DD日')} - ${item.title}`}</Link>
     </Card.Title>
     <div>
       {item.tags.map((tag) => (
@@ -33,24 +33,18 @@ const BlogCard = ({ item }) => (
   </Card>
 );
 
-export default () => {
-  const [items, setItems] = React.useState([]);
-  React.useEffect(
-    () => {
-      getBlogList().then((workList) => {
-        setItems(workList);
-      });
-    },
-    [],
-  );
-  return (
-    <>
-      <Container className="main-content">
-        <h1 className="section-title">Blog</h1>
-        {items.map((item) => (
-          <BlogCard key={item.id} item={item} />
-        ))}
-      </Container>
-    </>
-  );
+const BlogList = ({ items }) => (
+  <>
+    <Container className="main-content">
+      <h1 className="section-title">Blog</h1>
+      {items.map((item) => (
+        <BlogCard key={item.id} item={item} />
+      ))}
+    </Container>
+  </>
+);
+
+BlogList.getServerSideProps = async () => {
+  const items = await getBlogList();
+  return { props: { items } };
 };

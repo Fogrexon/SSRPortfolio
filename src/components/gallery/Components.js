@@ -4,12 +4,11 @@ import { getWorkList } from '../firebase/firestore';
 
 import Information from './Information';
 import style from './Gallery.module.scss';
-import noImage from '../images/galleries/noimage.png';
 
 export const GalleryCard = ({ item, index }) => {
   let { src } = item;
   const { title } = item;
-  src = src || noImage;
+  src = src || '/images/galleries/noimage.png';
 
   const id = `card_${index}`;
 
@@ -44,22 +43,17 @@ export const GalleryCard = ({ item, index }) => {
   );
 };
 
-export default () => {
-  const [items, setItems] = React.useState([]);
-  React.useEffect(
-    () => {
-      getWorkList().then((workList) => {
-        setItems(workList);
-      });
-    },
-    [],
-  );
+const GalleryList = ({ items }) => (
+  <div className="main-section">
+    {items.map((item, index) => (
+      <GalleryCard item={item} index={index} key={item.title} />
+    ))}
+  </div>
+);
 
-  return (
-    <div className="main-section">
-      {items.map((item, index) => (
-        <GalleryCard item={item} index={index} key={item.title} />
-      ))}
-    </div>
-  );
+GalleryList.getServerSideProps = async () => {
+  const items = await getWorkList();
+  return { props: { items } };
 };
+
+export default GalleryList;

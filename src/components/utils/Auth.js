@@ -8,7 +8,7 @@ export default (props) => {
   useEffect(() => {
     firebaseAuth.onAuthStateChanged((user) => {
       setChecked(true);
-      setLoginStatus(!!user && process.env.REACT_APP_ADMINISTRATOR_UID === user.uid);
+      setLoginStatus(!!user && process.env.NEXT_PUBLIC_ADMINISTRATOR_UID === user.uid);
     });
   }, []);
 

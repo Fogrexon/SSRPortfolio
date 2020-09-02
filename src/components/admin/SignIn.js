@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import { Redirect } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { firebase, auth as firebaseAuth } from '../firebase/firebase';
 
 const loginHandler = () => {
@@ -25,7 +25,7 @@ export default () => {
     case 'uncheck':
       return 'Loading';
     case 'logged in':
-      return <Redirect to="/admin" />;
+      return useRouter().replace('/admin');
     case 'not logged in':
       return (<Button onClick={loginHandler}>Signin with google</Button>);
     case 'permission denied':
