@@ -1,11 +1,19 @@
 import React from 'react';
 import App from '../components/App';
-import About from '../components/about/main';
+import { BigTitle } from '../components/utils/Components';
+import AboutInfo from '../components/about/Components';
 
-export default () => (
+const About = () => (
   <>
     <App>
-      <About />
+      <BigTitle title="Fogrex">
+        <p>
+          Fogrexの概要
+        </p>
+      </BigTitle>
+      <AboutInfo />
     </App>
   </>
 );
+
+export default About;

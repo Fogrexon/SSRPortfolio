@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth as firebaseAuth } from '../firebase/firebase';
 
-export default (props) => {
+const Auth = (props) => {
   const [loggedIn, setLoginStatus] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -24,3 +24,5 @@ export default (props) => {
     </>
   );
 };
+
+export default Auth;

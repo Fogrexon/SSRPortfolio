@@ -1,14 +1,22 @@
 import React from 'react';
-import App from '../components/App';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Link from 'next/link';
 import Auth from '../components/utils/Auth';
-import Admin from '../components/admin/Admin';
+import App from '../components/App';
 
-export default () => (
+const Admin = () => (
   <>
     <App>
       <Auth>
-        <Admin />
+        <Container>
+          <h1 className="section-title">Admin Panel.</h1>
+          <Link href="/admin/work"><Button>作品編集</Button></Link>
+          <Link href="/admin/blog"><Button>ブログ編集</Button></Link>
+        </Container>
       </Auth>
     </App>
   </>
 );
+
+export default Admin;

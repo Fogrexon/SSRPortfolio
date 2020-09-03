@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationBar, Footer } from './navigations/Components';
 
-export default ({ children }) => (
+const App = ({ children }) => (
   <>
     <NavigationBar />
     <div className="contents-outer">
@@ -10,3 +10,4 @@ export default ({ children }) => (
     <Footer />
   </>
 );
+export default App;

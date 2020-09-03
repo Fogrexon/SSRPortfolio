@@ -3,13 +3,13 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-import { firebase } from '../../firebase/firebase';
-import { updateWork } from '../../firebase/firestore';
-import { uploadImage } from '../../firebase/storage';
+import { firebase } from '../firebase/firebase';
+import { updateWork } from '../firebase/firestore';
+import { uploadImage } from '../firebase/storage';
 
 import style from './Items.module.scss';
 
-export default ({
+const Items = ({
   title,
   description,
   tags,
@@ -142,3 +142,5 @@ export default ({
 
   );
 };
+
+export default Items;

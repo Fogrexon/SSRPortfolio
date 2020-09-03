@@ -32,7 +32,7 @@ const Subsection = ({ title, children }) => (
   </div>
 );
 
-export default () => (
+const AboutInfo = () => (
   <>
     <SectionTitle title="Introduction" key="intro" />
     <Container>
@@ -107,3 +107,5 @@ export default () => (
     </Container>
   </>
 );
+
+export default AboutInfo;

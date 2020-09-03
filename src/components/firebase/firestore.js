@@ -53,7 +53,7 @@ const snapshotToBlogList = (list) => {
       id: doc.id,
       createdAt: formatDate(blog.createdAt.toDate(), 'YYYY年MM月DD日'),
       content: blog.content,
-      images: blog.images,
+      images: blog.images || [],
       tags: blog.tags,
       title: blog.title,
     });
@@ -72,13 +72,13 @@ const updateBlog = (id, blogInfo) => blogCollection.doc(id).update(blogInfo);
 const addBlog = (blogInfo) => blogCollection.doc().set(blogInfo);
 
 const getBlog = async (id) => {
-  const blog = await blogCollection.doc(id).get();
+  const blog = await (await blogCollection.doc(id).get()).data();
   if (!blog) return null;
   return {
     id,
     createdAt: formatDate(blog.createdAt.toDate(), 'YYYY年MM月DD日'),
     content: blog.content,
-    images: blog.images,
+    images: blog.images || [],
     tags: blog.tags,
     title: blog.title,
   };
