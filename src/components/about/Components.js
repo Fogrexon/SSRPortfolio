@@ -25,9 +25,9 @@ const Subsection = ({ title, children }) => (
       <h2 className="sub-section-title">
         {title}
       </h2>
-      <p>
+      <div>
         {children}
-      </p>
+      </div>
     </Parallax>
   </div>
 );

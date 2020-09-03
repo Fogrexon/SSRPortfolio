@@ -11,6 +11,11 @@ import style from '../../components/admin/Items.module.scss';
 import App from '../../components/App';
 import Auth from '../../components/utils/Auth';
 
+const metadata = {
+  title: 'Admin Blog Panel',
+  description: '',
+};
+
 const BlogCard = ({ item }) => (
   <Card key={item.id} className={style.card}>
     <Card.Title>
@@ -49,7 +54,7 @@ const BlogListEditing = () => {
   };
 
   return (
-    <App>
+    <App metadata={metadata}>
       <Auth>
         <Container>
           <h1 className="section-title">Blog Editing</h1>

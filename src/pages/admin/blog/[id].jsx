@@ -10,6 +10,11 @@ import { getBlog, updateBlog } from '../../../components/firebase/firestore';
 import { uploadBlogImage } from '../../../components/firebase/storage';
 import style from '../../../components/blogedit/BlogEdit.module.scss';
 
+const metadata = {
+  title: 'Blog Editor',
+  description: '',
+};
+
 const ImageBox = ({ filename, url }) => {
   const handleClick = (e) => {
     e.preventDefault();
@@ -93,7 +98,7 @@ const BlogEdit = ({ id }) => {
     return '';
   }
   return (
-    <App>
+    <App metadata={metadata}>
       <Auth>
         <Container>
           <h1 className="section-title">Blog Editor</h1>

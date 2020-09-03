@@ -5,9 +5,15 @@ import GalleryCard from '../components/gallery/Components';
 import { getWorkList } from '../components/firebase/firestore';
 // import Gallery from '../components/gallery/main';
 
+const metadata = {
+  title: "Fogrex's gallery",
+  description: 'Fogrexの作品展示場',
+  ogp: true,
+};
+
 const Gallery = ({ items }) => (
   <>
-    <App>
+    <App metadata={metadata}>
       <BigTitle title="Gallery">
         <p>
           ここではFogrexの制作物を展示しています

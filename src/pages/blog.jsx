@@ -4,9 +4,15 @@ import App from '../components/App';
 import BlogCard from '../components/blog/BlogCard';
 import { getBlogList } from '../components/firebase/firestore';
 
+const metadata = {
+  title: "Fogrex's blog",
+  description: 'Fogrexのブログ',
+  ogp: true,
+};
+
 const Blog = ({ items }) => (
   <>
-    <App>
+    <App metadata={metadata}>
       <Container className="main-content">
         <h1 className="section-title">Blog</h1>
         {items.map((item) => (
