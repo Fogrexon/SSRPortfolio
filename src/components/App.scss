@@ -1,0 +1,62 @@
+@import 'custom';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // overflow: hidden;
+}
+
+.contents-outer {
+  min-height: calc(100vh - 56px - 260px);
+}
+
+.section-title {
+  text-shadow: 0px 0px 10px rgba(white, 0.8);
+}
+
+.section {
+  margin: 20px auto;
+}
+
+.section-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  height: 50vh;
+}
+
+.sub-section-title {
+  color: $gray-800;
+  // padding: 0 0 30px 0;
+  transform-origin: bottom left;
+  transform: scale(2);
+}
+
+.sub-section {
+  padding: 85px 0 10px 0;
+}
+
+@keyframes TitleLogo {
+  0% {
+    transform: scale(1) rotate(1deg) translate(3px, 4px);
+  }
+  50% {
+    transform: scale(1.06) rotate(-1deg) translate(-3px, -2px);
+  }
+  100% {
+    transform: scale(1) rotate(1deg) translate(3px, 4px);
+  }
+}
+
+.jumbotron > .container {
+  animation: TitleLogo 4s infinite alternate ease-in-out;
+}
+pre {
+  // color: white;
+  background-color: #fafafa
+}
