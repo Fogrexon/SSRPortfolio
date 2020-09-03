@@ -42,7 +42,7 @@ export const Footer = () => (
             <i className={['fab fa-twitter', style.icons, style.twt].join(' ')} />
           </a>
           <a href="https://github.com/Fogrexon" target="_blank" rel="noopener noreferrer">
-            <i className={['fa fa-github', style.icons, style.ghb].join(' ')} />
+            <i className={['fab fa-github', style.icons, style.ghb].join(' ')} />
           </a>
           <a href="https://www.youtube.com/channel/UCNs8VOkhh8JPYwyH9yTsjzA" target="_blank" rel="noopener noreferrer">
             <i className={['fab fa-youtube', style.icons, style.ytb].join(' ')} />

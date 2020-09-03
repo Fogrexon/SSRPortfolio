@@ -4,6 +4,11 @@ import { useRouter } from 'next/router';
 import App from '../../components/App';
 import { firebase, auth as firebaseAuth } from '../../components/firebase/firebase';
 
+const metadata = {
+  title: 'Signin Panel',
+  description: '',
+};
+
 const loginHandler = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebaseAuth.signInWithPopup(provider);
@@ -24,16 +29,20 @@ const SignIn = () => {
   }, []);
   switch (login) {
     case 'uncheck':
-      return <App>Loading</App>;
+      return <App metadata={metadata}>Loading</App>;
     case 'logged in':
       useRouter().replace('/admin');
       return '';
     case 'not logged in':
-      return (<App><Button onClick={loginHandler}>Signin with google</Button></App>);
+      return (
+        <App metadata={metadata}>
+          <Button onClick={loginHandler}>Signin with google</Button>
+        </App>
+      );
     case 'permission denied':
-      return <App>Permission Denied</App>;
+      return <App metadata={metadata}>Permission Denied</App>;
     default:
-      return <App />;
+      return <App metadata={metadata} />;
   }
 };
 

@@ -8,6 +8,11 @@ import { firebase } from '../../components/firebase/firebase';
 import { getWorkList, addWork } from '../../components/firebase/firestore';
 import Items from '../../components/admin/Items';
 
+const metadata = {
+  title: 'Admin Work Panel',
+  description: '',
+};
+
 const GalleryAdmin = () => {
   const [items, setItems] = useState([]);
 
@@ -33,7 +38,7 @@ const GalleryAdmin = () => {
   };
 
   return (
-    <App>
+    <App metadata={metadata}>
       <Auth>
         <Container>
           <h1 className="section-title">Gallery Editing</h1>

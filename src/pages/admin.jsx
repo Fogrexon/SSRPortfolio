@@ -5,9 +5,14 @@ import Link from 'next/link';
 import Auth from '../components/utils/Auth';
 import App from '../components/App';
 
+const metadata = {
+  title: 'Admin Panel',
+  description: '',
+};
+
 const Admin = () => (
   <>
-    <App>
+    <App metadata={metadata}>
       <Auth>
         <Container>
           <h1 className="section-title">Admin Panel.</h1>
