@@ -4,7 +4,7 @@ import { Parallax, Element as ScrollElement } from 'rc-scroll-anim';
 import Information from './Information';
 import style from './Gallery.module.scss';
 
-export default ({ item, index }) => {
+const Gallery = ({ item, index }) => {
   let { src } = item;
   const { title } = item;
   src = src || '/noimage.png';
@@ -41,3 +41,5 @@ export default ({ item, index }) => {
     </ScrollElement>
   );
 };
+
+export default Gallery;
