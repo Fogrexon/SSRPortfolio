@@ -1,11 +1,10 @@
 import React from 'react';
 import { Parallax, Element as ScrollElement } from 'rc-scroll-anim';
-import { getWorkList } from '../firebase/firestore';
 
 import Information from './Information';
 import style from './Gallery.module.scss';
 
-export const GalleryCard = ({ item, index }) => {
+export default ({ item, index }) => {
   let { src } = item;
   const { title } = item;
   src = src || '/images/galleries/noimage.png';
@@ -42,18 +41,3 @@ export const GalleryCard = ({ item, index }) => {
     </ScrollElement>
   );
 };
-
-const GalleryList = ({ items }) => (
-  <div className="main-section">
-    {items.map((item, index) => (
-      <GalleryCard item={item} index={index} key={item.title} />
-    ))}
-  </div>
-);
-
-GalleryList.getServerSideProps = async () => {
-  const items = await getWorkList();
-  return { props: { items } };
-};
-
-export default GalleryList;

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
 // import 'easymde/dist/easymde.min.css';
+import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import { useRouter } from 'next/router';
 import { getBlog, updateBlog } from '../firebase/firestore';
 import { uploadBlogImage } from '../firebase/storage';
 import style from './BlogEdit.module.scss';
@@ -24,12 +24,26 @@ const ImageBox = ({ filename, url }) => {
   );
 };
 
-const BlogEdit = ({ blog }) => {
-  const [markdown, setMarkdown] = useState(blog.content);
-  const [title, setTitle] = useState(blog.title);
-  const [tags, setTags] = useState(blog.tags.join(' '));
-  const [images, setImages] = useState(blog.images);
+export default (props) => {
+  // eslint-disable-next-line react/destructuring-assignment
+  const { id } = props.match.params;
+  const [markdown, setMarkdown] = useState('');
+  const [title, setTitle] = useState('');
+  const [tags, setTags] = useState('');
+  const [images, setImages] = useState([]);
   const [submited, setSubmited] = useState(false);
+
+  useEffect(
+    () => {
+      getBlog(id).then((blog) => {
+        setMarkdown(blog.content);
+        setTitle(blog.title);
+        setTags((blog.tags || []).join(' '));
+        setImages(blog.images || []);
+      });
+    },
+    [],
+  );
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -42,7 +56,6 @@ const BlogEdit = ({ blog }) => {
   };
   const handleDrop = (data, e) => {
     e.preventDefault();
-    const { id } = useRouter().query;
     const { files } = e.dataTransfer;
     if (!files) return;
     const blogImageList = [];
@@ -113,11 +126,3 @@ const BlogEdit = ({ blog }) => {
     </Container>
   );
 };
-
-BlogEdit.getServerSideProps = async () => {
-  const { id } = useRouter().query;
-  const blog = await getBlog(id);
-  return { props: { blog } };
-};
-
-export default BlogEdit;

@@ -6,8 +6,6 @@ import { getBlog } from '../firebase/firestore';
 import markdown from '../markdown';
 import style from './Blog.module.scss';
 
-
-
 const Blog = ({ blog }) => (
   <Container>
     <div style={{ fontSize: '20px' }}>{blog.createdAt}</div>

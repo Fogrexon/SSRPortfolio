@@ -5,7 +5,7 @@ import { BigTitle, Content } from '../components/utils/Components';
 
 import { getWorkList } from '../components/firebase/firestore';
 
-export default ({ items }) => (
+const Index = ({ items }) => (
   <>
     <App>
       <BigTitle title="Welcome to Fogrex&apos;s Portfolio">
@@ -22,3 +22,5 @@ export const getServerSideProps = async () => {
   const items = await getWorkList(2);
   return { props: { items } };
 };
+
+export default Index;

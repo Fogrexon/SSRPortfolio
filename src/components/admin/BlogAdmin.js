@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -36,7 +35,15 @@ const BlogCard = ({ item }) => (
     </Card.Body>
   </Card>
 );
-const BlogAdmin = ({ items }) => {
+export default () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    getBlogList().then((list) => {
+      setItems(list);
+    });
+  }, []);
+
   const addItem = () => {
     addBlog({
       title: '仮タイトル',
@@ -44,7 +51,9 @@ const BlogAdmin = ({ items }) => {
       tags: [],
       createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     }).then(() => {
-      useRouter().reload();
+      getBlogList().then((workList) => {
+        setItems(workList);
+      });
     });
   };
 
@@ -58,10 +67,3 @@ const BlogAdmin = ({ items }) => {
     </Container>
   );
 };
-
-BlogAdmin.getServerSideProps = async () => {
-  const items = await getBlogList();
-  return { props: { items } };
-};
-
-export default BlogAdmin;
