@@ -7,7 +7,7 @@ import style from './Gallery.module.scss';
 export default ({ item, index }) => {
   let { src } = item;
   const { title } = item;
-  src = src || '/images/galleries/noimage.png';
+  src = src || '/noimage.png';
 
   const id = `card_${index}`;
 

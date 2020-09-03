@@ -77,13 +77,13 @@ const AboutInfo = () => (
         title={
           (
             <div className={style.fogrex_container}>
-              <img src="/images/fogrex_icon.svg" className={style.fogrex} alt="Big Fogrex Icon" />
+              <img src="/fogrex_icon.svg" className={style.fogrex} alt="Big Fogrex Icon" />
             </div>
           )
         }
       >
         このアイコンは私のシンボルともいえるものです。3秒で書きました。私の公式のページやチャンネルにはいたるところに用いられています。以下にsvgファイルを置いておきます。
-        <a href="/images/fogrex_icon.svg">SVG</a>
+        <a href="/fogrex_icon.svg">SVG</a>
       </Subsection>
     </Container>
     <SectionTitle title="Contact" key="contact" />
