@@ -1,9 +1,9 @@
 {
-  "name": "with-firebase-hosting",
-  "version": "5.0.0",
-  "description": "Host Next.js SSR app on Firebase Cloud Functions with Firebase Hosting redirects.",
+  "name": "fogrex_website",
+  "version": "3.0.0",
+  "description": "Fogrex website with nextjs and firebase",
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "main": "firebaseFunctions.js",
   "scripts": {

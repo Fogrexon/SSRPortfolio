@@ -35,11 +35,11 @@ export const getServerSideProps = async ({ query, req: { url } }) => {
 
   const metadata = {
     title: blog.title,
-    description: blog.content.slice(0, 20),
+    description: blog.content,
     ogp: true,
-    tag: blog.tags,
+    keywords: blog.tags.join(','),
     image: blog.images && blog.images.length > 0 ? blog.images[0].split('|')[1] : '',
-    url,
+    url: `https://fogrex.com${url}`,
   };
   return { props: { blog, metadata } };
 };

@@ -6,14 +6,14 @@ const App = ({
   children, metadata,
 }) => {
   const {
-    title, description, tags, image, summary, url, ogp,
+    title, description, keywords, image, url, ogp,
   } = metadata;
   return (
     <>
       <Head>
         <title>{title || "Fogrex's Website"}</title>
         <meta name="description" content={description} />
-        <meta name="keywords" content={`fogrex,${(tags || []).join(',')}`} />
+        <meta name="keywords" content={`fogrex,${keywords || ''}`} />
         <link rel="icon" href="/favicon.ico" />
         <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Quicksand&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
@@ -24,13 +24,11 @@ const App = ({
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://fogrex.com" />
+            <meta property="og:site_name" content="Fogrex's Portfolio" />
+            <meta property="og:url" content={`https://fogrex.com${url || '/'}`} />
             <meta property="og:image" content={image || '/fogrex_icon.jpg'} />
-            <meta name="twitter:card" content={summary || description || ''} />
-            <meta name="twitter:url" content={url} />
-            <meta name="twitter:image" content={image || '/fogrex_icon.jpg'} />
+            <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@Faglexon" />
-            <meta name="twitter:creator" content="@Faglexon" />
             <link rel="shortcut icon" href="/favicon.ico" />
             <link rel="apple-touch-icon" href="/fogrex_icon.jpg" />
           </>
