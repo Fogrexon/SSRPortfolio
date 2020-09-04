@@ -25,12 +25,12 @@ const App = ({
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content="Fogrex's Portfolio" />
-            <meta property="og:url" content={`https://fogrex.com${url || '/'}`} />
-            <meta property="og:image" content={image || '/fogrex_icon.jpg'} />
+            <meta property="og:url" content={url || 'https://fogrex.com'} />
+            <meta property="og:image" content={image || 'https://fogrex.com/fogrex_icon.jpg'} />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@Faglexon" />
-            <link rel="shortcut icon" href="/favicon.ico" />
-            <link rel="apple-touch-icon" href="/fogrex_icon.jpg" />
+            <link rel="shortcut icon" href="https://fogrex.com/favicon.ico" />
+            <link rel="apple-touch-icon" href="https://fogrex.com/fogrex_icon.jpg" />
           </>
         ) : ''}
       </Head>
