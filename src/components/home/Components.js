@@ -9,7 +9,7 @@ export const GalleryCard = ({ item }) => {
   const {
     title, description, link, sourcecode, tags,
   } = item;
-  src = src || '/images/galleries/noimage.png';
+  src = src || '/noimage.png';
   return (
     <Card>
       <Card.Img variant="top" src={src} />
